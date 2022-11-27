@@ -32,8 +32,11 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   } else {
-    res.writeHeader(404, { "Content-Type": "text/html" }); // Status & header
-    res.write("<h1>Not found :( </h1>");
+    res.writeHeader(200, { "Content-Type": "text/html" }); // Status & header
+    res.writeHeader(200, {
+      "Set-cookie": ["mySecondCookie=yummy", "mySecureCookie=ohhwee; httponly"],
+    });
+    res.write("<h1>Yuumy </h1>");
     res.end();
   }
 });
